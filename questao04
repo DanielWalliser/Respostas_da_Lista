@@ -1,0 +1,107 @@
+#include <stdio.h>
+
+int main() {
+  int valor;
+  int *p1;
+  float temp;
+  float *p2;
+  char aux;
+  char *nome = "Ponteiros";
+  char *p3;
+  int idade;
+  int vetor[3];
+  int *p4;
+  int *p5;
+  /* (a) */
+  valor = 10;
+  p1 = &valor;
+  *p1 = 20;
+  printf("%d \n", valor);
+
+  //Esse trecho altera o conteudo de p1 para 20, como a variável valor equivale ao conteudo de p1, logo a impressao da variavel inteiro valor equivale tambem a 20. 
+
+/* (b) */
+  temp = 26.5;
+  p2 = &temp;
+  *p2 = 29.0;
+  printf("%.1f \n", temp);
+
+  //Conforme o trecho defindo por a, o trecho b funciona de forma semelhante, porem a variavel temp e o ponteiro p2 foram definidos como float.
+  
+  /* (c) */
+  p3 = &nome[0];
+  aux = *p3;
+  printf("%c \n", aux);
+
+  //A variavel aux assumira o conteudo de p3, como p3 armazena o primeiro elemento do vetor nome, ou seja, o caracter P, logo a impressao de aux equivale a P.
+  
+  /* (d) */
+  p3 = &nome[4];
+  aux = *p3;
+  printf("%c \n", aux);
+
+  //A variavel aux assumira o conteudo de p3, como p3 armazena o quinto elemento do vetor nome, ou seja, o caracter P, logo a impressao de aux equivale a e.
+  
+  /* (e) */
+  p3 = nome;
+  printf("%c \n", *p3);
+
+  //*p3 equivale a variavel nome, como nome e um ponteiro para char, e cada char tem 1 byte, a impressao de *p3 corresponde ao conteudo de nome armazenado no primeiro byte de memoria de nome, logo imprime o caracter "P"
+  
+  /* (f) */
+  p3 = p3 +4;
+  printf("%c \n", *p3);
+    
+  //*p3 equivale a variavel nome, como nome e um ponteiro para char, e cada char tem 1 byte, o conteudo presente no quarto byte de *nome sera a quarta letra de Ponteiros, logo a impressao gera como resultado o caracter "e"
+
+  /* (g) */
+  p3--;
+  printf("%c \n", *p3);
+
+  //Como *p3 estava armazenando anteriormente o caracter "e" na memoria, p3-- equivale percorrer o byte anterior de p3, e como p3 = nome, o caracter anterior a "e" e o "t", caracter esse que e impresso
+  
+  /* (h) */
+  vetor[0] = 31;
+  vetor[1] = 45;
+  vetor[2] = 27;
+  p4 = vetor;
+  idade = *p4;
+  printf("%d \n", idade);
+
+  //p4 = ao vetor, como nao foi especificado o indice, sera o vetor[0] = 31, e como idade e igual ao conteudo de p4, logo imprimir idade equivale ao inteiro 31
+  
+  /* (i) */
+  p5 = p4 +1;
+  idade = *p5;
+  printf("%d \n", idade);
+
+  //p4 +1 equivale ao vetor[1], que tem como valor 45, valor que sera impresso
+  
+  /* (j) */
+  p4 = p5 +1;
+  idade = *p4;
+  printf("%d \n", idade);
+
+  //p5 +1 equivale ao vetor[2] = 27, valor esse que sera impresso
+  
+  /* (l) */
+  p4 = p4 -2;
+  idade = *p4;
+  printf("%d \n", idade);
+
+  //p4 assumia o valor de vetor[2], logo p4 - 2 equivale ao vetor[0], que e 31.
+  
+     /* (m) */
+  p5 = &vetor[2] - 1;
+  printf("%d \n", *p5);
+  
+  //p5 e igual ao conteudo de vetor[1], pois &vetor[2] - 1 signinifica percorrer 4 bytes anteriores a vetor[2], ja que vetor e um int, e isso equivale a vetor[1] = 45
+  
+  /* (n) */
+  p5++;
+  printf("%d \n", *p5);
+
+  //p5++ significa adcionar 4 bytes ao endereco de memoria de p5, ou seja, como p5 equivalia anteriormente ao vetor[1], agora equivale ao vetor[2]
+  
+  return(0);
+}
