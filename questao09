@@ -1,0 +1,17 @@
+#include <stdio.h>
+
+int main(void) {
+  char x[4];
+  int i;
+  for(i = 0 ; i < 3 ; i++){
+  printf("%p\n",x + i);}
+  
+return 0;
+}
+
+/* Quando o vetor é definido por char, a expressao sera alocada nos espaços da memoria 4093, 4094 e 4095.
+   Quando o vetor é definido por char, a expressao sera alocada nos espaços da memoria 4094, 4096 e 4098.
+   Quando o vetor é definido por char, a expressao sera alocada nos 
+espaços da memoria 4096, 4100 e 4104.
+   Quando o vetor é definido por char, a expressao sera alocada nos 
+espaços da memoria 4100, 4108 e 4116.*/
