@@ -1,0 +1,16 @@
+#include <stdio.h>
+
+int main() {
+int mat[4] = {2,4,6,8}, *p, x;
+
+p = mat + 1;
+//p = mat++;
+//p = ++mat;
+x = (*mat)++;
+
+printf ("%d\n",p);
+printf ("%d\n",x);
+  
+}
+
+//As expressoes (p = mat + 1) e (x = (*mat)++;), ja que para percorrer na memoria e necessario saber quantos bytes serao percorridos, situacao que so pode ser satisfeita caso um esteja explicito o local na memoria ou a quantidade de bytes solicitada por uma variavel ou valor numerico.
