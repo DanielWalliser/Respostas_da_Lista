@@ -1,0 +1,15 @@
+#include <stdio.h>
+
+int main(){
+  int vet[] = {4,9,13};
+  int i;
+  for(i=0;i<3;i++){
+  printf("%d ",*(vet+i)); 
+  }
+
+  for(i=0;i<3;i++){
+  printf("%X ",vet+i);
+  }
+}
+// O primeiro programa percorre os indices do vetor vet [].
+// O segundo programa percorre os enderecos onde os elementos de vet estao alocados na memoria de 4 em 4 bytes
