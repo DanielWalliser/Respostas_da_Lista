@@ -1,0 +1,26 @@
+#include <stdio.h>
+
+int main(void) {
+int i=3,j=5,res = 0;
+int *p, *q;
+p = &i;
+printf("%x\n",p);
+q = &j;
+printf("%x\n",q);
+p == &i;
+printf("%x\n",p);
+res = *p - *q;
+printf("%d\n",res);
+**&p;
+printf("%d\n",**&p);  
+res = 3 - *p/(*q) + 7;
+printf("%d\n",res);
+  
+  return 0;
+}
+//p = &i retorna o endereco de memoria de i
+//q = &j retorna o endereco de memoria de j
+//p == &i retorna true, pois a condicao e satisfeita
+//*p - *q retorna o valor inteiro -2, o equivalente a 3 - 5 = 2, ou seja, a subtracao do conteudo de p pelo conteudo de q
+//**&p equivale ao conteudo armazenado no conteudo do endereco de p, que equivale a 3
+//3 - *p/(*q) + 7 = 10, o equivalente a 3 - 3/5 + 7 = 3 - 0 + 7, ja que como as variaveis foram definidas por int, valores fracionados serao arredondados
