@@ -1,0 +1,23 @@
+#include <stdio.h>
+
+int main(void){
+  float vet[5] = {1.1,2.2,3.3,4.4,5.5};
+  float *f;
+  int i;
+  f = vet;
+  printf("contador/valor/valor/endereco/endereco");
+  for(i = 0 ; i <= 4 ; i++){
+  printf("\ni = %d|",i);
+  printf("vet[%d] = %.1f|",i, vet[i]);
+  printf("*(f + %d) = %.1f|",i, *(f+i));
+  printf("&vet[%d] = %X|",i, &vet[i]);
+  printf("(f + %d) = %X",i, f+i);
+  }
+}
+
+// O programa acima percorre 5 vezes por meio da função for 5 funções printf diferentes.
+//1° printf - Imprime o valor assumido pela variavel i.
+//2° printf - Imprime o elemento i do vetor vet pre-definido como float.
+//3° printf - Imprime o valor do conteudo de f (*f), um ponteiro que contem o valor do primeiro elemento do vetor vet, ou seja, 1.1 e faz a leitura sequencia do byte atual na memoria acrescido de 4 bytes (valor corresponde ao tamanho em bytes da variavel i).
+//4° printf - Imprime em hexadecimal o endereco de memoria de vet[i]
+//5° printf - Imprime em hexadcimal o endereco de memoria de f, percorrendo 4*i bytes, o equivalente a imprimir vet[i], ja que f = vet
