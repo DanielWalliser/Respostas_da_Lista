@@ -1,0 +1,18 @@
+#include <stdio.h>
+
+int main() {
+int pulo[6] = {2,4,6,8,10,12};
+
+printf("%d\n",pulo);
+*(pulo + 2);
+printf("%d\n",*(pulo + 2));
+*(pulo + 4);
+printf("%d\n",*(pulo + 4));
+pulo + 4;
+printf("%d\n",pulo + 4);
+pulo + 2;
+printf("%d\n",pulo + 2);
+
+}
+
+//A expressão exposta dentro do printf como *(pulo + 2) caracteriza a terceira posição do vetor pulo.
