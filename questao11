@@ -1,0 +1,23 @@
+#include <stdio.h>
+
+int main() {
+float aloha[10], coisas[10][5], *pf, value = 2.2;
+int i=3;
+  
+aloha[2] = value;
+scanf("%f", &aloha); 
+// Nao foi declarado o elemento do vetor a ser associado a variavel value
+aloha = value; 
+// A variavel aloha foi declarada como vetor, a assimilacao nao e possivel considerando apenas como variavel
+printf("%f", aloha);
+coisas[4][4] = aloha[3];
+coisas[5] = aloha; 
+// Declarado como vetor, a assimilacao nao e possivel considerando apenas como variavel
+pf = value; 
+// O vetor pf está sendo igualado a variavel value, que é 2.2, porém ele não designa qual posição do vetor ele se encaixa
+pf = aloha; 
+// Ha a necessidade de informar a posicao dos vetores pf e aloha
+
+printf("%f",pf);
+
+}
