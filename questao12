@@ -1,0 +1,78 @@
+/*O uso de ponteiros para funções em C serve principalmente para definir, em tempo de execução, qual função será executada, sem a necessidade de escrever o nome da função, de forma explícita naquele ponto do código.
+Em geral, a definição de qual função será executada é feita em um outro ponto do código, fazendo o ponteiro apontar para a função desejada.
+Inicialmente, se deve criar um tipo de dado que aponte para uma função, da seguinte forma:
+typedef int TIPOFuncaoSemParametros();
+Isto define um tipo de dado que permitirá criar um ponteiro para uma funçãio que retorna um int e que não tem parâmetros.
+Para outros tipos de função, devem ser criados novos tipos como no exemplo a seguir:
+typedef int TIPOFuncaoComParametros (int x, float y);
+typedef int TIPOFuncaoSemParametros();*/
+
+#include <stdlib.h>
+#include <stdio.h>
+
+unsigned long long bintodec(unsigned char m[8][8]){  
+  int i, j, k; //k = variavel auxiliar que deslocara o bit
+  unsigned char *pchar; //corresponde da funcao ao que seria a matriz 'm'
+  unsigned long long xllu; //variavel que retorna o valor de mllu no formato unsigned long long
+  pchar = &xllu; //pchar equivale ao endereco de xllu
+
+  //Percorre da orimeira linha e primeira coluna ate a ultima linha e coluna
+  for (i = 0; i < 8; i++){
+  k = 7;
+  pchar[i] = 0; //atribui a variavel pchar o valor 0 e adiciona 1 ou 0 dependendo do elemento da matriz m
+    for(j = 0; j < 8; j++) {        
+    pchar[i] += m[i][j] << k; //pchar assume o valor de 0 ou 1 no bit menos significativo, na sequencia do for esse bit desloca-se para esquerda em k unidades, tornando-se o mais significativo e decrescendo de uma unidade
+    k--;
+  }   
+} 
+  return xllu; // xllu equivale a um numero qualquer representado por um numero binario de 64 elementos
+}
+
+void printbits(unsigned char bitxllu){ 
+  unsigned char bit;
+  int numero = 0, k;
+  bit=128;
+
+  for(k=7; k>=0; k--){
+
+    if((bitxllu & bit) > 0){ //Se o valor de bitxllu advindo da variavel xllu for maior que 0 e a variavel bit tambem, adicione 1 para o bit 
+      printf("1  ");
+    }
+    else{
+      printf("0  ");
+    }
+    bit = bit/2; //Divide bit por 2 e desloca o valor 1 ou 0 associado ao bit para direita
+  }
+}
+
+void dectobin(unsigned long long xllu){
+  unsigned char *pk; //ponteiro de uma variavel que armazena 8 bits por elemento, a representacao ideal de cada linha composta de 1 ou 0 da matriz m
+  pk = &xllu; // Esse trecho associa pk (unsigned char) ao endereco de xllu (unsigned long long) para que nao ocorra erro na execucao da funcao printbits
+  printf("A matriz 'm' impressa a partir do endereco de memoria de uma variavel unsigned long long\n\n");
+  for(int i = 0; i < 8; i++){
+    printbits(pk[i]); // i = cada elemento do vetor pk
+    printf("\n");
+  }
+}
+
+int main(){
+  unsigned char m[8][8]; //matriz gerada pela funcao rand ()%2;
+  unsigned long long mllu; //variável que vai receber a matriz no formato long long
+  int i, j;
+
+printf("A matriz 'm' gerada corresponde a:\n\n");
+  
+for (i = 0; i < 8; i++){
+  for (j = 0; j < 8; j++){
+  m[i][j] = rand ()%2;
+  printf ("%d  ",m[i][j]);
+  }
+  printf("\n");
+  }
+  printf("\n");
+
+  mllu = bintodec(m);//Converte a matriz m[8][8] para um unico elemento no formato %llu representando na memoria de forma binaria
+  printf("Representacao dos elementos da matriz 'm' em um unico decimal no formato long long u: %llu \n\n", mllu);
+  dectobin(mllu);
+
+}
